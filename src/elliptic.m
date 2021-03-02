@@ -1,9 +1,6 @@
 clc
-n = 10;
+n = 5;
 [coordinates, elements3, elements4, dirichlet, neumann] = maillage_carre(n);
-
-%Tloc=[coordinates(1,:);coordinates(2,:); coordinates(4,:)]
-%Mloc=raideur_triangle(Tloc)
 
 Ns = n ^ 2;
 
@@ -23,15 +20,13 @@ for ind = elements3'
 end
 
 % Contribution des conditions de Dirichlet
-nbP = length(coordinates(:,1));
-
-for i=1:nbP
+for i=1:Ns
        B(i) = B(i) - A(i,dirichlet) * u_d(coordinates(dirichlet,:));
 end
 
-U = zeros(nbP, 1);
+U = zeros(Ns, 1);
 U(dirichlet) = u_d(coordinates(dirichlet));
-temp = setdiff(1:nbP, dirichlet);   
-u(temp) = A(temp,temp) \ B(temp);
-show(elements3, elements4, coordinates, u);
+temp = setdiff(1:Ns, dirichlet);   
+U(temp) = A(temp,temp) \ B(temp);
+show(elements3, elements4, coordinates, U);
 

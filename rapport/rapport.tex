@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{float}
+\usepackage[pdf]{graphviz}
+
+\usepackage{geometry}
+\geometry{hmargin=2.5cm,vmargin=1.5cm}
+
+\begin{document}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=5cm]{inp_n7.png}
+\end{figure}
+
+\title{\vspace{4cm} \textbf{Equations aux dérivées partielles}}
+\author{El Bouzekraoui Younes | MDAA Saad}
+\date{\vspace{7cm} Département Sciences du Numérique - Deuxième année \\
+2020-2021 }
+
+\maketitle
+
+\newpage
+\tableofcontents
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Equations aux dérivées partielles elliptiques}
+\subsection{Partie théorique}
+$\bullet$ On suppose que $u \in H^{1}(\Omega)$ \\
+pour $w \in H_{0}^{1}(\Omega)$ et d'après la formule de Green on a :
+$$
+\int_{\Omega} \nabla u . \nabla w \,dx + \int_{\Omega} \triangle u . w \,dx = \int_{\partial \Omega} \gamma_{1}(u) \gamma_{0}(w) \,dx = \int_{\partial \Omega_{d}} \gamma_{1}(u) \gamma_{0}(w) \,dx + \int_{\partial \Omega_{n}} \gamma_{1}(u) \gamma_{0}(w) \,dx 
+$$
+on pose $v = u - u_d \in H_{0}^{1}(\Omega)$ on a:
+$$
+\int_{\Omega} \nabla (v + u_d) . \nabla w \,dx - \int_{\Omega} f w \,dx = \int_{\partial \Omega_{d}} \gamma_{1}(u) \gamma_{0}(w) \,dx + \int_{\partial \Omega_{n}} \gamma_{1}(u) \gamma_{0}(w) \,dx 
+$$
+donc
+$$
+\int_{\Omega} \nabla v . \nabla w \,dx = \int_{\Omega} f w \,dx + \int_{\partial \Omega_{n}} g \gamma_{0}(w) \,dx - \int_{\Omega} \nabla u_d . \nabla w \,dx
+$$
+en effet on a
+$$
+\gamma_1(u) = \frac{\partial u}{\partial n} = g \textrm{ sur } \partial \Omega_{n}
+$$
+et
+$$
+\gamma_0(w) = w = 0 \textrm{ sur } \partial \Omega_{d} \textrm{ car } w \in H_{0}^{1}(\Omega)
+$$
+
+$\bullet$
+
+
+\end{document}

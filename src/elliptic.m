@@ -1,14 +1,15 @@
 clc
-n = 5;
+n = 12;
 [coordinates, elements3, elements4, dirichlet, neumann] = maillage_carre(n);
 
 Ns = n ^ 2;
 
+%Triangle
 %Assemblage de la matrice A
 A = zeros(Ns);
 for ind = elements3'
     Tloc = [coordinates(ind(1),:);coordinates(ind(2),:); coordinates(ind(3),:)];
-    [M,alpha] = raideur_triangle(Tloc);
+    [M, alpha] = raideur_triangle(Tloc);
     A(ind,ind) = A(ind,ind) + M;
 end
 
@@ -29,4 +30,13 @@ U(dirichlet) = u_d(coordinates(dirichlet));
 temp = setdiff(1:Ns, dirichlet);   
 U(temp) = A(temp,temp) \ B(temp);
 show(elements3, elements4, coordinates, U);
+
+%Quadrangle
+%Assemblage de la matrice A
+
+elements4 = load('elements4.dat');
+for ind = elements4'
+    Cloc = [coordinates(ind(1),:);coordinates(ind(2),:); coordinates(ind(3),:); coordinates(ind(4),:)];
+    [M, alpha] = raideur_quadrangle(Cloc);
+end
 

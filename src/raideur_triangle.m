@@ -1,5 +1,4 @@
 function [M,alpha] = raideur_triangle(T)
-    % T= [T1(1) , T1(2) ; T2(1) , T2(2) ; T3(1), T3(2) ]
     alpha=det([ (T(2,1)-T(1,1)) , (T(3,1)-T(1,1)) ; (T(2,2)-T(1,2)) , (T(3,2)-T(1,2)) ]);
     M=zeros(3,3);
     for i=0:2 

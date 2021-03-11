@@ -5,6 +5,7 @@
 \usepackage{color}
 \usepackage{float}
 \usepackage[pdf]{graphviz}
+\usepackage{amsmath}
 
 \usepackage{geometry}
 \geometry{hmargin=2.5cm,vmargin=1.5cm}
@@ -31,19 +32,19 @@
 \section{Equations aux dérivées partielles elliptiques}
 \subsection{Partie théorique}
 $\bullet$ On suppose que $u \in H^{1}(\Omega)$ \\
-pour $w \in H_{0}^{1}(\Omega)$ et d'après la formule de Green on a :
+pour $w \in H_{0}^{1}(\Omega)$ on a :
 $$
-\int_{\Omega} \nabla u . \nabla w \,dx + \int_{\Omega} \triangle u . w \,dx = \int_{\partial \Omega} \gamma_{1}(u) \gamma_{0}(w) \,dx = \int_{\partial \Omega_{d}} \gamma_{1}(u) \gamma_{0}(w) \,dx + \int_{\partial \Omega_{n}} \gamma_{1}(u) \gamma_{0}(w) \,dx 
+- \int_{\Omega} \triangle u . w \,dx = \int_{\Omega} f . w \,dx
+$$
+d'apres la formule de green :
+$$
+\int_{\Omega} \nabla u . \nabla w \,dx - \int_{\partial \Omega} \gamma_{1}(u) \gamma_{0}(w) \,dx = \int_{\Omega} f . w \,dx
 $$
 on pose $v = u - u_d \in H_{0}^{1}(\Omega)$ on a:
 $$
-\int_{\Omega} \nabla (v + u_d) . \nabla w \,dx - \int_{\Omega} f w \,dx = \int_{\partial \Omega_{d}} \gamma_{1}(u) \gamma_{0}(w) \,dx + \int_{\partial \Omega_{n}} \gamma_{1}(u) \gamma_{0}(w) \,dx 
+\int_{\Omega} \nabla (v + u_d) . \nabla w \,dx  = \int_{\Omega} f w \,dx + \int_{\partial \Omega_{d}} \gamma_{1}(u) \gamma_{0}(w) \,dx + \int_{\partial \Omega_{n}} \gamma_{1}(u) \gamma_{0}(w) \,dx 
 $$
-donc
-$$
-\int_{\Omega} \nabla v . \nabla w \,dx = \int_{\Omega} f w \,dx + \int_{\partial \Omega_{n}} g \gamma_{0}(w) \,dx - \int_{\Omega} \nabla u_d . \nabla w \,dx
-$$
-en effet on a
+or 
 $$
 \gamma_1(u) = \frac{\partial u}{\partial n} = g \textrm{ sur } \partial \Omega_{n}
 $$
@@ -51,8 +52,31 @@ et
 $$
 \gamma_0(w) = w = 0 \textrm{ sur } \partial \Omega_{d} \textrm{ car } w \in H_{0}^{1}(\Omega)
 $$
+donc 
+$$
+\boxed{\int_{\Omega} \nabla v . \nabla w \,dx = \int_{\Omega} f w \,dx + \int_{\partial \Omega_{n}} g \gamma_{0}(w) \,dx - \int_{\Omega} \nabla u_d . \nabla w \,dx}
+$$
+\\
+$\bullet$ Soit la forme bilinéaire sur $H_{0}^{1}(\Omega) \times H_{0}^{1}(\Omega)$ définie par 
+$$
+a : (u, v) \rightarrow <u, v>_{1, \Omega} =  \int_{\Omega} \nabla u . \nabla v \,dx
+$$
+soit la forme linéaire sur $H_{0}^{1}(\Omega)$ définie par
+$$
+l : w \rightarrow \int_{\Omega} f w \,dx + \int_{\partial \Omega_{n}} g \gamma_{0}(w) \,dx - \int_{\Omega} \nabla u_d . \nabla w \,dx
+$$
+on a pour $w \in H_{0}^{1}(\Omega)$
+$$
+|l(w)| = |\int_{\Omega} f w \,dx + \int_{\partial \Omega_{n}} g \gamma_{0}(w) \,dx - \int_{\Omega} \nabla u_d . \nabla w \,dx|
+$$
+$$
+\leq |\int_{\Omega} f w \,dx| + |\int_{\partial \Omega_{n}} g \gamma_{0}(w) \,dx| + |\int_{\Omega} \nabla u_d . \nabla w \,dx|
+$$
+par inégalité de cauchy schwarz on a 
+$$
+|l(w)| \leq ||f||_{L^2(\Omega)} . ||w||_{L^2(\Omega)} + ||g||_{L^2(\partial \Omega} . ||w||_{L^2(\partial \Omega)}
+$$
 
-$\bullet$
 
 
 \end{document}

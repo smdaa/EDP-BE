@@ -6,6 +6,7 @@
 \usepackage{float}
 \usepackage[pdf]{graphviz}
 \usepackage{amsmath}
+\usepackage{amssymb}
 
 \usepackage{geometry}
 \geometry{hmargin=2.5cm,vmargin=1.5cm}
@@ -57,26 +58,68 @@ $$
 \boxed{\int_{\Omega} \nabla v . \nabla w \,dx = \int_{\Omega} f w \,dx + \int_{\partial \Omega_{n}} g \gamma_{0}(w) \,dx - \int_{\Omega} \nabla u_d . \nabla w \,dx}
 $$
 \\
-$\bullet$ Soit la forme bilinéaire sur $H_{0}^{1}(\Omega) \times H_{0}^{1}(\Omega)$ définie par 
+$\bullet$ Soit la \textbf{forme bilinéaire} sur $H_{0}^{1}(\Omega) \times H_{0}^{1}(\Omega)$ définie par 
 $$
-a : (u, v) \rightarrow <u, v>_{1, \Omega} =  \int_{\Omega} \nabla u . \nabla v \,dx
+a : (u, v) \rightarrow \int_{\Omega} \nabla u . \nabla v \,dx
 $$
-soit la forme linéaire sur $H_{0}^{1}(\Omega)$ définie par
+soit la \textbf{forme} sur $H_{0}^{1}(\Omega)$ définie par
 $$
 l : w \rightarrow \int_{\Omega} f w \,dx + \int_{\partial \Omega_{n}} g \gamma_{0}(w) \,dx - \int_{\Omega} \nabla u_d . \nabla w \,dx
 $$
-on a pour $w \in H_{0}^{1}(\Omega)$
+en appliquant le théoreme de Lax-Milgram sur $a$ et $l$ on a 
+$$
+\boxed{\exists ! u \in H_{0}^{1}(\Omega) \; \; \forall v \in H_{0}^{1}(\Omega) \; \; a(u, v) = l(v)}
+$$
+pour cela il faut vérifier que \\
+$\rightarrow$ \textbf{$l$ est linéaire} : \\
+soient $w_1$, $w_2$ $\in H_{0}^{1}(\Omega)$, $\lambda \in \mathbb{R}$ on a 
+$$
+l(w_1 + \lambda w_2) = \int_{\Omega} f (w_1 + \lambda w_2) \,dx + \int_{\partial \Omega_{n}} g \gamma_{0}(w_1 + \lambda w_2) \,dx - \int_{\Omega} \nabla u_d . \nabla (w_1 + \lambda w_2) \,dx
+$$
+$$
+= \int_{\Omega} f w_1 \,dx + \int_{\partial \Omega_{n}} g \gamma_{0}(w_1) \,dx - \int_{\Omega} \nabla u_d . \nabla w_1 \,dx + \lambda(\int_{\Omega} f w_2 \,dx + \int_{\partial \Omega_{n}} g \gamma_{0}(w_2) \,dx - \int_{\Omega} \nabla u_d . \nabla w_2 \,dx)
+$$
+$$
+l(w_1 + \lambda w_2) = l(w_1) + \lambda l(w_2)
+$$
+$\rightarrow$ \textbf{$l$ est continue} : \\
+soit $w$ $\in H_{0}^{1}(\Omega)$ on a 
 $$
 |l(w)| = |\int_{\Omega} f w \,dx + \int_{\partial \Omega_{n}} g \gamma_{0}(w) \,dx - \int_{\Omega} \nabla u_d . \nabla w \,dx|
 $$
 $$
 \leq |\int_{\Omega} f w \,dx| + |\int_{\partial \Omega_{n}} g \gamma_{0}(w) \,dx| + |\int_{\Omega} \nabla u_d . \nabla w \,dx|
 $$
-par inégalité de cauchy schwarz on a 
+par inégalité de cauchy schwarz car $f \in L^2(\Omega)$ et $w \in H_{0}^{1}(\Omega) \subset L^2(\Omega)$ on a
 $$
-|l(w)| \leq ||f||_{L^2(\Omega)} . ||w||_{L^2(\Omega)} + ||g||_{L^2(\partial \Omega} . ||w||_{L^2(\partial \Omega)}
+|\int_{\Omega} f w \,dx| \leq ||f||_{L^2(\Omega)} ||w||_{L^2(\Omega)} 
 $$
-
-
-
+par inégalité de Poincaré on a $\exists C_1 \geq 0$ tq
+$$
+|\int_{\Omega} f w \,dx| \leq C_1 ||f||_{L^2(\Omega)} |w|_{1, \Omega} 
+$$
+$g \in L^2(\partial \Omega_n)$ et $\gamma_{0}(w) \in L^2(\partial \Omega_n)$ donc par inégalité de cauchy schwarz on a
+$$
+|\int_{\partial \Omega_{n}} g \gamma_{0}(w) \,dx| \leq ||g||_{L^2(\partial \Omega_n)} ||\gamma_{0}(w)||_{L^2(\partial \Omega_n)}
+$$
+par inégalité de Poincaré on a $\exists C_2 \geq 0$ tq
+$$
+|\int_{\partial \Omega_{n}} g \gamma_{0}(w) \,dx| \leq C_2 ||g||_{L^2(\partial \Omega_n)} |w|_{1, \Omega}
+$$
+$w$ $\in H_{0}^{1}(\Omega)$ et $u_d$ $\in H_{0}^{1}(\Omega)$ donc par inégalité de cauchy schwarz on a (car $\Omega$ est un ouvert borné)
+$$
+|\int_{\Omega} \nabla u_d . \nabla w \,dx| \leq |u_d|_{1, \Omega} |w|_{1, \Omega}
+$$
+donc 
+$$
+|l(w)| \leq C |w|_{1, \Omega}
+$$
+d'ou la continuité \\ \\
+$\rightarrow$ \textbf{$a$ est continue} : \\
+par continuité du produit scalaire \\ \\
+$\rightarrow$ \textbf{$a$ est coercive} : \\
+soit $u \in H_{0}^{1}(\Omega)$ on a par inégalité de cauchy schwarz
+$$
+|a(u, u)| = |<u, u>_{1, \Omega}| \leq |u|^{2}_{1, \Omega}
+$$
 \end{document}

@@ -11,6 +11,5 @@ function [M, alpha] = raideur_quadrangle(Q)
     M(1:3, 4) = [-2 * c + a; -(a + 3 * b + c); c - 2 * a];
     M(1:2, 3) = [-(a + 3 * b + c); -2 * c + a];
     M(1, 2) = -2 * c + a;
-    M = (M + M.') / 2;
-    
+    M = floor((M + M.') / 2);
 end

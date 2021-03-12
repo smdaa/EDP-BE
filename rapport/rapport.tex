@@ -122,4 +122,55 @@ soit $u \in H_{0}^{1}(\Omega)$ on a par inégalité de cauchy schwarz
 $$
 |a(u, u)| = |<u, u>_{1, \Omega}| \leq |u|^{2}_{1, \Omega}
 $$
+\\
+$\bullet$ on note $n$ le nombre de degrés de liberté et $\eta_k$ les fonctions de base des éléments finis définie par 
+$$
+\forall k \in [1, n] \; \; \eta_k(x_j, y_j) = \delta_{k, j} 
+$$
+on cherche une solution dans l'espace engendré par $(\eta_{k})_{[1, n]}$ donc $v$ s'ecrit comme 
+$$
+v = \sum_{k=1}^{n} v_k n_k
+$$
+on injecte dans l'équation de la question 1 avec $w = \eta_j \; \; j \in [1, n]$ et 
+$$
+u_d = \sum_{k=1}^{n} U_k \eta_k
+$$
+avec 
+$$
+U_k = \left\{
+    \begin{array}{ll}
+        0 & \mbox{si } (x_k, y_k) \notin \partial \Omega_{n} \\
+        u_d(x_k, y_k) & \mbox{sinon.}
+    \end{array}
+\right.
+$$
+$$
+\int_{\Omega} \nabla (\sum_{k=1}^{n} v_k \eta_k) . \nabla \eta_j \,dx = \int_{\Omega} f \eta_j \,dx + \int_{\partial \Omega_{n}} g \gamma_{0}(\eta_j) \,dx - \int_{\Omega} \nabla (\sum_{k=1}^{n} U_k \eta_k) . \nabla \eta_j \,dx
+$$
+donc 
+$$
+\sum_{k=1}^{n} v_k (\int_{\Omega} \nabla \eta_k . \nabla \eta_j \,dx) = \int_{\Omega} f \eta_j \,dx + \int_{\partial \Omega_{n}} g \gamma_{0}(\eta_j) \,dx - \sum_{k=1}^{n} U_k (\int_{\Omega} \nabla \eta_k . \nabla \eta_j \,dx)
+$$
+ceci pour $j \in [1, n]$ ce qui est équivalent au système linéaire d équations $\boxed{Ax = b}$ avec 
+$$
+A_{kj} = \int_{\Omega} \nabla \eta_k . \nabla \eta_j \,dx
+$$
+
+$$
+b_j = \int_{\Omega} f \eta_j \,dx + \int_{\partial \Omega_{n}} g \eta_j \,dx - \sum_{k=1}^{n} U_k (\int_{\Omega} \nabla \eta_k . \nabla \eta_j \,dx)
+$$
+$\rightarrow$ existence de la solution \\ \\
+$A$ est définie postive donc le système admet une unique solution en effet pour $x \in \mathbb{R}^n$
+$$
+x^{T}Ax = \sum\nolimits_{(i, j) \in [1, n]^2} A_{ij} x_i x_j = \sum\nolimits_{(i, j) \in [1, n]^2} a(\eta_i, \eta_j) x_i x_j
+$$
+par bilinéairité de $a$ on a
+$$
+x^{T}Ax = a(\sum_{j=1}^{n} x_j \eta_j, \sum_{i=1}^{n} x_i \eta_i) = a(z, z)
+$$
+avec $z = \sum_{i=1}^{n} x_i \eta_i$ or $a$ et continue donc 
+$$
+x^{T}Ax \geq C |z|^{2}_{(1, \Omega)}
+$$
+or si $|z|_{(1, \Omega)} = 0$ donc $z = 0$ alors $x=0$
 \end{document}

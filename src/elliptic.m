@@ -44,7 +44,7 @@ end
 
 %% Assemblage du second membre dans le cas de conditions de Dirichlet et de Neumann
 B = zeros(Ns, 1);
-for ind = elements3'
+for ind = elements4'
     B(ind) = B(ind) + (alpha / 4) .* f((sum(coordinates(ind, :)) ./ 4));     
 end
 
@@ -54,10 +54,6 @@ for i=1:Ns
 end
 
 % Contribution des conditions de Neumann
-
-% for i=1:Ns
-%        B(i) = B(i) - A(i, dirichlet) * u_d(coordinates(dirichlet, :));
-% end
 
 U = zeros(Ns, 1);
 % condittion de Dirichlet

@@ -1,4 +1,4 @@
-function U = elliptic(n, f, g, Q1, aff)  
+function [U, A] = elliptic(n, f, g, Q1, aff)  
 %   n   = nombre de points par cote du carré
 %   f   = fonction f
 %   g   = fonction g

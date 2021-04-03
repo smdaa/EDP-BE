@@ -38,7 +38,7 @@ grid on
 ylabel ('|| u_ex - u_h ||_{2h}');
 xlabel('h');
 legend('|| u_ex - u_h ||_{2h}', 'h', 'h^2','h^3')
-title('évolution en loi log-log de || u_{ex} - u_h ||_{2h} en focntion de h ');
+title('évolution en loi log-log de || u_{ex} - u_h ||_{2h} en fonction de h ');
 
 %% l'évolution du nombre d'éléments non nuls de R en fonctionde la taille de la matrice
 n_max = 30;
@@ -48,6 +48,7 @@ y = zeros(n_max - 9, 1);
 
 for i = 10:n_max
     [U, A]  = elliptic(i, @f, @g, false, false);
+    % -0 est une vap de A donc MATLAB refuse de calculer chol(A)
     [V, D] = eig(A);
     D(D < 0) = 0.0;
     A = V * D * (V'); 

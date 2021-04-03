@@ -1,2 +1,5 @@
 \contentsline {section}{\numberline {1}Equations aux dérivées partielles elliptiques}{3}%
 \contentsline {subsection}{\numberline {1.1}Partie théorique}{3}%
+\contentsline {subsection}{\numberline {1.2}Mise en oeuvre pratique}{5}%
+\contentsline {subsection}{\numberline {1.3}Analyse de l'ordre du schéma de discrétisation dans le cas d'éléments Triangle}{6}%
+\contentsline {subsection}{\numberline {1.4}Résolution du système linéaire par une méthode directe}{7}%

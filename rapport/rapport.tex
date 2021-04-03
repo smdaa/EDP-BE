@@ -79,6 +79,7 @@ $$
 $$
 = \int_{\Omega} f w_1 \,dx + \int_{\partial \Omega_{n}} g \gamma_{0}(w_1) \,dx - \int_{\Omega} \nabla u_d . \nabla w_1 \,dx + \lambda(\int_{\Omega} f w_2 \,dx + \int_{\partial \Omega_{n}} g \gamma_{0}(w_2) \,dx - \int_{\Omega} \nabla u_d . \nabla w_2 \,dx)
 $$
+car $\gamma_0$ est linéaire
 $$
 l(w_1 + \lambda w_2) = l(w_1) + \lambda l(w_2)
 $$
@@ -94,7 +95,7 @@ par inégalité de cauchy schwarz car $f \in L^2(\Omega)$ et $w \in H_{0}^{1}(\O
 $$
 |\int_{\Omega} f w \,dx| \leq ||f||_{L^2(\Omega)} ||w||_{L^2(\Omega)} 
 $$
-par inégalité de Poincaré on a $\exists C_1 \geq 0$ tq
+par inégalité de Poincaré on a $\exists C_1 \geq 0$ tq (car $\Omega$ est un ouvert borné)
 $$
 |\int_{\Omega} f w \,dx| \leq C_1 ||f||_{L^2(\Omega)} |w|_{1, \Omega} 
 $$
@@ -102,11 +103,15 @@ $g \in L^2(\partial \Omega_n)$ et $\gamma_{0}(w) \in L^2(\partial \Omega_n)$ don
 $$
 |\int_{\partial \Omega_{n}} g \gamma_{0}(w) \,dx| \leq ||g||_{L^2(\partial \Omega_n)} ||\gamma_{0}(w)||_{L^2(\partial \Omega_n)}
 $$
-par inégalité de Poincaré on a $\exists C_2 \geq 0$ tq
+par continuité de $\gamma_0$ on $\exists C_2 \geq 0$ tq
+$$
+||\gamma_0(w)||_{L^2(\partial \Omega_n)} \leq C_2 |w|_{1, \Omega}
+$$
+donc
 $$
 |\int_{\partial \Omega_{n}} g \gamma_{0}(w) \,dx| \leq C_2 ||g||_{L^2(\partial \Omega_n)} |w|_{1, \Omega}
 $$
-$w$ $\in H_{0}^{1}(\Omega)$ et $u_d$ $\in H_{0}^{1}(\Omega)$ donc par inégalité de cauchy schwarz on a (car $\Omega$ est un ouvert borné)
+on a $w$ $\in H_{0}^{1}(\Omega)$ et $u_d$ $\in H_{0}^{1}(\Omega)$ donc par inégalité de cauchy schwarz on a (car $\Omega$ est un ouvert borné)
 $$
 |\int_{\Omega} \nabla u_d . \nabla w \,dx| \leq |u_d|_{1, \Omega} |w|_{1, \Omega}
 $$
@@ -117,10 +122,12 @@ $$
 d'ou la continuité \\ \\
 $\rightarrow$ \textbf{$a$ est continue} : \\
 par continuité du produit scalaire \\ \\
+$\rightarrow$ \textbf{$a$ est bilinéaire} : \\
+par bilinéairité du produit scalaire \\ \\
 $\rightarrow$ \textbf{$a$ est coercive} : \\
 soit $u \in H_{0}^{1}(\Omega)$ on a par inégalité de cauchy schwarz
 $$
-|a(u, u)| = |<u, u>_{1, \Omega}| \leq |u|^{2}_{1, \Omega}
+|a(u, u)| = |<u, u>_{1, \Omega}| \geq |u|^{2}_{1, \Omega}
 $$
 \\
 $\bullet$ on note $n$ le nombre de degrés de liberté et $\eta_k$ les fonctions de base des éléments finis définie par 
@@ -173,4 +180,55 @@ $$
 x^{T}Ax \geq C |z|^{2}_{(1, \Omega)}
 $$
 or si $|z|_{(1, \Omega)} = 0$ donc $z = 0$ alors $x=0$
+
+\subsection{Mise en oeuvre pratique}
+$\bullet$ Construction de la matrice de raideur élementaire $M_{T}^{A}$ relative a un élément triangle \\
+
+voir \textbf{raideur\_triangle.m} \\ \\
+$\bullet$ Assemblage de la matrice A dans le cas d'un maillage constitué uniquement d'éléments triangles + second membre dans le cas de conditions de Dirichlet uniquement \\
+
+voir \textbf{elliptic.m} \\ \\ 
+$\bullet$ Construction de la matrice de raideur élementaire $M_{Q}^{A}$ relative a un élément quadrangle \\
+
+voir \textbf{raideur\_quadrangle.m} \\ \\
+Insert calcul here \\
+
+$\bullet$ Inclusion du traitement de tels éléments de type Q1 et des conditions de Neumann \\ 
+
+voir \textbf{elliptic.m} \\ \\ 
+
+$\bullet$ Résultats \\
+
+voir \textbf{main.m} \\ \\ 
+\begin{figure}[H]
+\centering
+\includegraphics[width=12cm]{P1.png}
+\caption{Solution sur le maillage P1 + conditions de Dirichlet uniquement avec n=5}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=12cm]{Q1.png}
+\caption{Solution sur le maillage Q1 + conditions de Dirichlet et Neumann}
+\end{figure}
+
+\subsection{Analyse de l'ordre du schéma de discrétisation dans le cas d'éléments Triangle}
+
+voir \textbf{main.m} \\ \\ 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=12cm]{loglog.png}
+\caption{évolution en loi log-log de $|| u_{ex} - u_h ||_{2h}$ en fonction de $h$}
+\end{figure}
+On obtient un ordre de discrétisation de 2.
+
+
+\subsection{Résolution du système linéaire par une méthode directe}
+\begin{figure}[H]
+\centering
+\includegraphics[width=12cm]{nonzero.png}
+\caption{évolution du nombre éléments non nuls de R en fonctionde la taille de la matrice}
+\end{figure}
+
 \end{document}

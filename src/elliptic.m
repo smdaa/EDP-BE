@@ -45,7 +45,7 @@ function [U, A] = elliptic(n, f, g, Q1, aff)
         for ind = neumann'  
            a1 = coordinates(ind(1), :);
            a2 = coordinates(ind(2), :);
-           B(ind) = B(ind) + (norm(a2 - a1) / 2) * g((a1 + a2) / 2); 
+           B(ind) = B(ind) + (norm(a2 - a1)) * g((a1 + a2) / 2); 
         end
     end
 

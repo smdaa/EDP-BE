@@ -191,7 +191,97 @@ voir \textbf{elliptic.m} \\ \\
 $\bullet$ Construction de la matrice de raideur élementaire $M_{Q}^{A}$ relative a un élément quadrangle \\
 
 voir \textbf{raideur\_quadrangle.m} \\ \\
-Insert calcul here \\
+en effet on a 
+$$
+[M_{Q}^{A}]_{ij} = \int_Q \nabla \eta_{i}(x, y)^{T} \nabla \eta_{j}(x, y) \,dx dy
+$$
+Une manière simple de déterminer l'expression de ces fonctions pour tout couple $(x, y) \in Q$ est de se ramener au carré de référence $U$,
+de sommets $(u_1, v_1) = (0, 0)$, $(u_2, v_2) = (1, 0)$, $(u_3, v_3) = (0, 1)$ et $(u_4, v_4) = (1, 1)$ \\
+En effet sur ce carré, les fonctions de base correspondant à ces sommets sont définies pour tout couple $(\xi, \zeta) \in [0, 1]^2$ par :
+\begin{gather*} 
+    \phi_1(\xi, \zeta) = (1 - \xi)(1 - \zeta) \\
+    \phi_2(\xi, \zeta) = \xi(1 - \zeta) \\
+    \phi_3(\xi, \zeta) = \xi \zeta \\
+    \phi_4(\xi, \zeta) = (1 - \xi) \zeta
+\end{gather*}
+En utilisant ce qui précède, on passe des fonctions de base sur $U$ aux fonctions de base sur $Q$ grace
+à une formule de composition pour $j \in \{1,2,3,4\}$
+$$
+\forall (x, y) \in Q \, \, \eta_{j}(x, y) = \phi_{j}(\Phi^{-1}_{Q}(x, y))
+$$
+donc 
+
+$$
+[M_{Q}^{A}]_{ij} = \int_Q \nabla \phi_i(\Phi^{-1}_{Q}(x, y))^{T} \nabla \phi_j(\Phi^{-1}_{Q}(x, y)) \,dx dy
+$$
+On utilise la formule de changement de variables donné en annexe on a 
+$$
+[M_{Q}^{A}]_{ij} = \int_U \nabla \phi_i(\xi, \zeta)^{T} (J_{\Phi}^{T} J_{\Phi})^{-1} \nabla \phi_j(\xi, \zeta) |J_{\Phi}| \,d \xi d \zeta
+$$
+
+on a $(J_{\Phi}^{T} J_{\Phi})^{-1}$ est symétrique alors on pose
+$$
+(J_{\Phi}^{T} J_{\Phi})^{-1} =
+\begin{bmatrix}
+    a & b \\
+    b & c
+\end{bmatrix}
+$$
+
+donc
+$$
+[M_{Q}^{A}]_{ij} = |J_{\Phi}| \int_U \nabla \phi_i(\xi, \zeta)^{T} 
+\begin{bmatrix}
+    a & b \\
+    b & c
+\end{bmatrix}
+\nabla \phi_j(\xi, \zeta) \,d \xi d \zeta
+$$
+
+avec 
+\begin{gather*} 
+    \nabla \phi_1(\xi, \zeta) = 
+    \begin{bmatrix}
+        \zeta - 1 \\
+        \xi - 1
+    \end{bmatrix} \\
+    \nabla \phi_2(\xi, \zeta) = 
+    \begin{bmatrix}
+        1 - \zeta  \\
+        - \xi
+    \end{bmatrix} \\
+    \nabla \phi_3(\xi, \zeta) = 
+    \begin{bmatrix}
+        \zeta  \\
+        \xi
+    \end{bmatrix} \\
+    \nabla \phi_4(\xi, \zeta) = 
+    \begin{bmatrix}
+        -\zeta  \\
+        1 - \xi
+    \end{bmatrix}
+\end{gather*}
+
+et 
+
+$$
+J_{\Phi} = 
+\begin{bmatrix}
+    x_2 - x_1 & x_4 - x_1 \\
+    y_2 - y_1 & y_4 - y_1
+\end{bmatrix}
+$$
+
+ce qui nous donne
+$$
+[M_{Q}^{A}] = \frac{det(J_{\Phi})}{6}
+\begin{bmatrix}
+    2a+3b+2c & -2a+c & -a-3b-c & a-2c \\
+    -2a+c & 2a-3b+2c & a-2c & -a+3b-c \\
+    -a-3b-c & a-2c & 2a+3b+2c & -2a+c \\
+    a-2c & -a+3b-c & -2a+c & 2a-3b+2c 
+\end{bmatrix}
+$$
 
 $\bullet$ Inclusion du traitement de tels éléments de type Q1 et des conditions de Neumann \\ 
 
@@ -230,5 +320,6 @@ On obtient un ordre de discrétisation de 2.
 \includegraphics[width=12cm]{nonzero.png}
 \caption{évolution du nombre éléments non nuls de R en fonctionde la taille de la matrice}
 \end{figure}
+$\bullet$ On remarque que 
 
 \end{document}

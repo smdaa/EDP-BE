@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.2.28)  3 APR 2021 22:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.2.28)  4 APR 2021 09:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -313,82 +313,77 @@ Underfull \hbox (badness 10000) in paragraph at lines 193--195
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 193--195
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 196--197
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 286--287
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--199
+Underfull \hbox (badness 10000) in paragraph at lines 288--289
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--199
+Underfull \hbox (badness 10000) in paragraph at lines 288--289
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 200--201
+Underfull \hbox (badness 10000) in paragraph at lines 290--291
 
  []
 
-<P1.png, id=29, 421.575pt x 316.18124pt>
+<P1.png, id=33, 421.575pt x 316.18124pt>
 File: P1.png Graphic file (type png)
 <use P1.png>
-Package pdftex.def Info: P1.png  used on input line 205.
+Package pdftex.def Info: P1.png  used on input line 295.
 (pdftex.def)             Requested size: 341.43306pt x 256.08127pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--207
+Underfull \hbox (badness 10000) in paragraph at lines 292--297
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--207
+Underfull \hbox (badness 10000) in paragraph at lines 292--297
 
  []
 
-[5]
-<Q1.png, id=34, 421.575pt x 316.18124pt>
+[6]
+<Q1.png, id=37, 421.575pt x 316.18124pt>
 File: Q1.png Graphic file (type png)
 <use Q1.png>
-Package pdftex.def Info: Q1.png  used on input line 211.
+Package pdftex.def Info: Q1.png  used on input line 301.
 (pdftex.def)             Requested size: 341.43306pt x 256.08127pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 217--218
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 217--218
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
 
  []
 
-<loglog.png, id=35, 421.575pt x 316.18124pt>
+<loglog.png, id=38, 421.575pt x 316.18124pt>
 File: loglog.png Graphic file (type png)
 <use loglog.png>
-Package pdftex.def Info: loglog.png  used on input line 221.
+Package pdftex.def Info: loglog.png  used on input line 311.
 (pdftex.def)             Requested size: 341.43306pt x 256.08127pt.
-[6 <./P1.png (PNG copy)> <./Q1.png (PNG copy)>]
-<nonzero.png, id=39, 421.575pt x 316.18124pt>
+[7 <./P1.png (PNG copy)> <./Q1.png (PNG copy)>]
+<nonzero.png, id=43, 421.575pt x 316.18124pt>
 File: nonzero.png Graphic file (type png)
 <use nonzero.png>
-Package pdftex.def Info: nonzero.png  used on input line 230.
+Package pdftex.def Info: nonzero.png  used on input line 320.
 (pdftex.def)             Requested size: 341.43306pt x 256.08127pt.
- [7 <./loglog.png (PNG copy)> <./nonzero.png (PNG copy)>] (./rapport.aux) ) 
+ [8 <./loglog.png (PNG copy)> <./nonzero.png (PNG copy)>] (./rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 3003 strings out of 481239
- 39590 string characters out of 5920377
+ 3004 strings out of 481239
+ 39598 string characters out of 5920377
  284490 words of memory out of 5000000
- 18237 multiletter control sequences out of 15000+600000
+ 18238 multiletter control sequences out of 15000+600000
  540508 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 30i,13n,31p,270b,234s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,14n,31p,270b,234s stack positions out of 5000i,500n,10000p,200000b,80000s
 </us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texl
@@ -402,10 +397,10 @@ ts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 r7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on rapport.pdf (7 pages, 312851 bytes).
+Output written on rapport.pdf (8 pages, 320609 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
- 57 compressed objects within 1 object stream
+ 89 PDF objects out of 1000 (max. 8388607)
+ 59 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

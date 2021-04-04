@@ -1,5 +1,5 @@
 %
-% TP EDP 2017-2018 - Descriptif des fichiers MATLAB fournis
+% TP EDP 2020-2021 - Descriptif des fichiers MATLAB fournis
 % 
 
 %
@@ -16,8 +16,9 @@ g.m		 : fonction g
 % Fichiers a ecrire par les etudiants
 %
 
-elliptic.m         : fichier principal
-raideur_triangle.m : matrice de raideur sur un triangle
+main.m               : script principal
+elliptic.m           : fonction qui renvoie la solution d'une equa diff lineaire
+raideur_triangle.m   : matrice de raideur sur un triangle
 raideur_quadrangle.m : matrice de raideur sur un quadrangle
 
 %

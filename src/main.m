@@ -48,11 +48,7 @@ y = zeros(n_max - 9, 1);
 
 for i = 10:n_max
     [U, A]  = elliptic(i, @f, @g, false, false);
-    % -0 est une vap de A donc MATLAB refuse de calculer chol(A)
-    [V, D] = eig(A);
-    D(D < 0) = 0.0;
-    A = V * D * (V'); 
-    R = chol(abs(A));
+    [R, flag] = chol((A));
     x(i - 9) = length(A);
     y(i - 9) = length(find(R));    
 end

@@ -17,7 +17,7 @@ g.m		 : fonction g
 %
 
 main.m               : script principal
-elliptic.m           : fonction qui renvoie la solution d'une equa diff lineaire
+elliptic.m           : fonction qui renvoie la solution d'une equa diff lineaire élliptique
 raideur_triangle.m   : matrice de raideur sur un triangle
 raideur_quadrangle.m : matrice de raideur sur un quadrangle
 

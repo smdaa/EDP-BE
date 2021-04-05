@@ -7,6 +7,7 @@
 \usepackage[pdf]{graphviz}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{hyperref}
 
 \usepackage{geometry}
 \geometry{hmargin=2.5cm,vmargin=1.5cm}
@@ -272,6 +273,32 @@ J_{\Phi} =
 \end{bmatrix}
 $$
 
+en effet on a 
+\begin{gather*}
+    x = (x_2 - x_1) \xi + (x_4 - x_1) \zeta + x_1 \\
+    y = (y_2 - y_1) \xi + (y_4 - y_1) \zeta + y_1
+\end{gather*}
+
+L'inversion de ce système permet d'obtenir pour tout couple $(x, y)$
+$$
+\xi = \frac{(y_4 - y_1)(x - x_1) - (x_4 - x_1)(y - y_1)}{(y_4 - y_1)(x_2 - x_1) - (x_4 - x_1)(y_2 - y_1)} \\
+$$
+
+$$
+\zeta = \frac{(y_2 - y_1)(x - x_1) - (x_2 - x_1)(y - y_1)}{(y_2 - y_1)(x_4 - x_1) - (x_2 - x_1)(y_4 - y_1)}
+$$
+on pose $U = [\xi \, \, \zeta]^{T}$, $X = [x \, \, y]^{T}$, $X_1 = [x_1 \, \, y_1]^{T}$ et 
+$$
+J_{\Phi} = 
+\begin{bmatrix}
+    x_2 - x_1 & x_4 - x_1 \\
+    y_2 - y_1 & y_4 - y_1
+\end{bmatrix}
+$$ on a 
+$$
+X = \Phi_Q(U) = J_{\Phi} U + X_1
+$$
+
 ce qui nous donne
 $$
 [M_{Q}^{A}] = \frac{det(J_{\Phi})}{6}
@@ -317,9 +344,23 @@ On obtient un ordre de discrétisation de 2.
 \subsection{Résolution du système linéaire par une méthode directe}
 \begin{figure}[H]
 \centering
-\includegraphics[width=12cm]{nonzero.png}
-\caption{évolution du nombre éléments non nuls de R en fonctionde la taille de la matrice}
+\includegraphics[width=12cm]{nonzero2.png}
+\caption{évolution du nombre éléments non nuls de R en fonction de la taille de la matrice}
 \end{figure}
-$\bullet$ On remarque que 
+$\bullet$ On remarque que le nombre des éléments non nuls de R est beaucoup plus élevé 
+par rapport au nombre des éléments non nuls de A et cela aura un effet sur le temps et le coût mémoire nécessaire pour le calcul de la solution \\
+$\bullet$ La factorisation Cholesky d'une matrice creuse ne donne pas nécessairement un matrice creuse (le produit de deux matrices creuse n'est pas nécessairement une matrice creuse )
+\newline
+$\bullet$ On peut suggérer une approche qui consiste à faire un pré-traitement sur la matrice A en la permutant d'une certaine façon qui nous permettra d'obtenir une bonne décomposition de Chloseky ( Matrice chol(A) creuse) 
+
+\newline
+La fonction symamd de Matlab [ symamd  p = symamd(S) ] permet pour une matrice définie positive S de trouver le vecteur de permutation p tel que S(p,p) tend à avoir la meilleure factorisation de Chloseky (Matrice de Chloseky chol(A) la plus Creuse possible) 
+\newline
+\newline
+ \href{https://fr.mathworks.com/help/matlab/math/sparse-matrix-reordering.html}{https://fr.mathworks.com/help/matlab/math/sparse-matrix-reordering.html}
+\newline
+\newline 
+On peut remarquer dans la figure précédente un différence significative entre le nombre des éléments non nuls de chol(A) dans le cas où on n'a pas fait de pré-traitement sur la matrice A et dans le cas où on a fait des permutions avant la décomposition.
+ 
 
 \end{document}
